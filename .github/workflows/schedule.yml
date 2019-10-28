@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "0 0 * * *"
 jobs:
   create_status_check_job:
     runs-on: ubuntu-latest
