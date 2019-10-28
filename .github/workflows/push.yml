@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - "*"
+jobs:
+  create_status_check_job:
+    runs-on: ubuntu-latest
+    name:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1 # shallow clone
+      - name: Create Status Check
+        uses: ./.github/actions/create-status-check
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
